@@ -8,9 +8,12 @@ import (
 
 func Test(t *testing.T) {
 	tmpFileFh, err := ioutil.TempFile(os.TempDir(), "go-flock-")
+	if err != nil {
+		t.Fatalf("failed to create temp file: %v", err)
+	}
 	tmpFileFh.Close()
+
 	tmpFile := tmpFileFh.Name()
-	os.Remove(tmpFile)
 
 	lock := New(tmpFile)
 	locked, err := lock.TryLock()
