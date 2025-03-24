@@ -23,9 +23,6 @@ func TestFlock_fh_onError(t *testing.T) {
 	err = tmpFile.Close()
 	require.NoError(t, err)
 
-	err = os.Remove(tmpFile.Name())
-	require.NoError(t, err)
-
 	lock := New(tmpFile.Name())
 
 	locked, err := lock.TryLock()

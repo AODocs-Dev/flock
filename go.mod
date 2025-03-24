@@ -1,4 +1,4 @@
-module github.com/gofrs/flock
+module github.com/AODocs-Dev/flock
 
 go 1.21.0
 

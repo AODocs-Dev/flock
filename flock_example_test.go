@@ -14,7 +14,7 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/gofrs/flock"
+	"github.com/AODocs-Dev/flock"
 )
 
 func ExampleFlock_Locked() {

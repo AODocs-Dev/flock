@@ -21,7 +21,6 @@ import (
 	"context"
 	"io/fs"
 	"os"
-	"runtime"
 	"sync"
 	"time"
 )
@@ -61,14 +60,7 @@ type Flock struct {
 // it takes is the path to the desired lockfile.
 func New(path string, opts ...Option) *Flock {
 	// create it if it doesn't exist, and open the file read-only.
-	flags := os.O_CREATE
-	switch runtime.GOOS {
-	case "aix", "solaris", "illumos":
-		// AIX cannot preform write-lock (i.e. exclusive) on a read-only file.
-		flags |= os.O_RDWR
-	default:
-		flags |= os.O_RDONLY
-	}
+	flags := os.O_RDWR
 
 	f := &Flock{
 		path: path,

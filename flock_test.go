@@ -14,7 +14,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/gofrs/flock"
+	"github.com/AODocs-Dev/flock"
 	"github.com/stretchr/testify/suite"
 )
 
@@ -57,9 +57,6 @@ func (s *TestSuite) SetupTest() {
 	s.path = tmpFile.Name()
 
 	err = tmpFile.Close()
-	s.Require().NoError(err)
-
-	err = os.Remove(s.path)
 	s.Require().NoError(err)
 
 	s.flock = flock.New(s.path, s.opts...)
